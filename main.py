@@ -1,5 +1,1 @@
-def a():
-    print("hello-git")
-
-
-a()
+print("alo")
