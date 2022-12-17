@@ -4,17 +4,16 @@ from random import randint
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic
+from UI import Ui_MainWindow
 
-UI_PATH = "UI.ui"
 CIRCLE_MAX_SIZE = 200
 CIRCLE_MIN_SIZE = 50
-CIRCLE_COLOR = QtGui.QColor(255, 255, 0)
 
 
-class MainWindow(QtWidgets.QMainWindow):
+class MainWindow(Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi(UI_PATH, self)
+        self.setupUi(self)
         self.do_paint = False
         self.setEvents()
 
@@ -35,7 +34,8 @@ class MainWindow(QtWidgets.QMainWindow):
         x = randint(0, self.width())
         y = randint(0, self.height())
 
-        painter.setBrush(CIRCLE_COLOR)
+        r, g, b = randint(0, 255), randint(0, 255), randint(0, 255)
+        painter.setBrush(QtGui.QColor(r, g, b))
         painter.drawEllipse(x, y, diameter, diameter)
 
 
